@@ -63,7 +63,6 @@ GEM
     multi_json (1.12.1)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
-    pg (0.15.1)
     polyglot (0.3.5)
     power_assert (0.3.1)
     rack (1.5.5)
@@ -152,8 +151,6 @@ DEPENDENCIES
   coffee-rails (= 4.0.1)
   jbuilder (= 1.0.2)
   jquery-rails (= 3.0.4)
-  minitest
-  pg (= 0.15.1)
   rails (= 4.0.8)
   rails_12factor (= 0.0.2)
   rspec-rails
