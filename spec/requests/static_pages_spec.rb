@@ -1,11 +1,12 @@
 require 'spec_helper'
 
-describe "Static pages" do
+describe "Static pages" do #Static pageのRSpecを書きますよということ
   
   subject { page }
 
-  describe "Home page" do
+  describe "Home page" do #Home Pageのところはどんなstringでもいい"
     before { visit root_path }
+
 
     it { should have_content('Sample App') }
     it { should have_title(full_title('')) }
