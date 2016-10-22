@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!--  application.html.erb is a special layout page for home,about,and other html.erb pages -->
 <html>
   <head>
-    <title><%= full_title(yield(:title)) %></title>
+    <title><%= full_title(yield(:title)) %></title> <!-- this line can be inserted due to application_helper.rb -->
     <%= stylesheet_link_tag "application", media: "all",
-                                           "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-    <%= csrf_meta_tags %>
+                                           "data-turbolinks-track" => true %> <!-- don't need to understand this line -->
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>  <!-- don't need to understand this line -->
+    <%= csrf_meta_tags %>  <!-- don't need to understand this line -->
     <%= render 'layouts/shim' %>
   </head>
 
@@ -15,10 +15,16 @@
     <%= render 'layouts/header' %>
 
     <div class="container">
-      <%= yield %>
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+      <%= yield %> <!--  insert pages like home.html.erb, about.html.erb -->
 
 
       <%= render 'layouts/footer' %>
+      <%= debug(params) if Rails.env.development? %>
     </div>
   </body>
 </html>
+
+

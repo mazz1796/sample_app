@@ -14,12 +14,16 @@ group :development, :test do
   
   gem 'test-unit'
   gem 'byebug'
+  
 end
 
 group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.2.0'
+  gem 'factory_girl_rails', '4.2.0'
 end
+
+
 
 gem 'sass-rails', '4.0.3'
 gem 'uglifier', '2.1.1'
