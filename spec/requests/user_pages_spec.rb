@@ -46,27 +46,22 @@ describe "User pages" do
       it "should create a user" do
         expect { click_button submit }.to change(User, :count).by(1)
       end
+
+
+      describe "after saving the user" do
+        before { click_button submit } #beforeの意味は、以下の4つの例を実行するまえに(submitボタンをクリックしろ）っていうこと。
+        let(:user) { User.find_by(email: 'user@example.com') }
+
+        it { should have_link('Sign out') }
+        it { should have_title(user.name) }
+        it { should have_selector('div.alert.alert-success', text: 'Welcome') }
+      end
+      #end of valid information
     end
+
+  #end of signup
   end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#end of user pages
 end
 
 

@@ -13,10 +13,17 @@ describe User do #testing model User
   it { should respond_to(:password_digest)}
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
+  it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate)}
 
 
   it { should be_valid }
+
+  describe "remember token" do
+    before { @user.save }
+    # its(:remember_token) { should_not be_blank } 
+    it { expect(@user.remember_token).not_to be_blank } #@userが保存される前に、remember_tokenはblankではダメ
+  end
 
   describe "when name is not present" do #description of these two liners test
     before { @user.name = " " }
