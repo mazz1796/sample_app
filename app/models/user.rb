@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :microposts, dependent: :destroy
 	before_save { self.email = email.downcase} #saveするまえにdowncaseに変更する
 	before_create :create_remember_token # this:called Method Reference, add a callback method to create a remember token immediately before creating a new user in the database
 
@@ -18,6 +19,12 @@ class User < ActiveRecord::Base
 
     def User.digest(token)
     	Digest::SHA1.hexdigest(token.to_s)
+    end
+
+
+    def feed
+    # This is preliminary. See "Following users" for the full implementation.
+      Micropost.where("user_id = ?", id)
     end
 
     private

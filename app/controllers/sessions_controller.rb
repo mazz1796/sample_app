@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def create
   	user = User.find_by(email: params[:session][:email].downcase)
   	if user && user.authenticate(params[:session][:password])
-    	
+
     	# Sign the user in and redirect to the user's show page.
     	sign_in user
       redirect_back_or user
@@ -18,11 +18,11 @@ class SessionsController < ApplicationController
   	end
   end
   	#render 'new'  #defの中に今回のようにrenderとかが入っているときと、上のように空っぽの時の違いは？
-  
+
 
   def destroy
     sign_out
     redirect_to root_url
   end
-  
+
 end
