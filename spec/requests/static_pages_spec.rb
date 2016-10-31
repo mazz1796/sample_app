@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'spec_helper'  #spec_helpr.rbでCapybaraを呼び出す。i.e. vist, (page)はCapybara syntax
 
 describe "Static pages" do #Static pageのRSpecを書きますよということ
 
@@ -27,6 +27,20 @@ describe "Static pages" do #Static pageのRSpecを書きますよということ
           expect(page).to have_selector("li##{item.id}", text: item.content)
         end
       end
+
+      describe "follower/following counts" do
+        let(:other_user) { FactoryGirl.create(:user) }
+        before do
+          other_user.follow!(user)
+          visit root_path
+        end
+
+        it { should have_link("0 following", href: following_user_path(user)) }
+        it { should have_link("1 followers", href: followers_user_path(user)) }
+      end
+
+
+
     end
   end
 
